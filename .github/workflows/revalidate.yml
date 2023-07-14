@@ -1,0 +1,15 @@
+name: revalidate blog
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: request revalidate
+        uses: JamesIves/fetch-api-data-action@v2
+        with:
+          endpoint: https://chun-blog.vercel.app/api/revalidate?path=/&secretKey=${{secrets.SECRET_KEY}}
